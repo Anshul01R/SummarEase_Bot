@@ -7,7 +7,7 @@ __version__ = "0.0.1"
 
 REPO_NAME = "Text_Summarizer-Project"
 AUTHOR_USER_NAME = "Anshul01R"
-SRC_REPO = 'TextSummarizer'
+SRC_REPO = 'SummarEase Bot'
 AUTHOR_EMAIL = "singhans031@gmail.com"
 
 setuptools.setup(

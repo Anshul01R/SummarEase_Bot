@@ -1,9 +1,9 @@
-from TextSummarizer.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
-from TextSummarizer.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
-from TextSummarizer.pipeline.stage_03_data_transformation import DataTransformationTrainingPipeline
-from TextSummarizer.pipeline.stage_04_model_trainer import ModelTrainerTrainingPipeline
-from TextSummarizer.pipeline.stage_05_model_evaluation import ModelEvaluationTrainingPipeline
-from TextSummarizer.logging import logger
+from src.TextSummarizer.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
+from src.TextSummarizer.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
+from src.TextSummarizer.pipeline.stage_03_data_transformation import DataTransformationTrainingPipeline
+from src.TextSummarizer.pipeline.stage_04_model_trainer import ModelTrainerTrainingPipeline
+from src.TextSummarizer.pipeline.stage_05_model_evaluation import ModelEvaluationTrainingPipeline
+from src.TextSummarizer.logging import logger
 
 STAGE_NAME = "Data Ingestion stage"
 try:

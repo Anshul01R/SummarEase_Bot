@@ -1,7 +1,7 @@
 # app.py
 from flask import Flask, render_template, request, jsonify
 import os
-from TextSummarizer.pipeline.prediction import PredictionPipeline
+from src.TextSummarizer.pipeline.prediction import PredictionPipeline
 
 app = Flask(__name__, static_folder="static", template_folder="static")
 

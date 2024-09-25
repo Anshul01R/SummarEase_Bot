@@ -1,6 +1,6 @@
-from TextSummarizer.config.configuration import ConfigurationManager
-from TextSummarizer.components.model_evaluation import ModelEvaluation
-from TextSummarizer.logging import logger
+from src.TextSummarizer.config.configuration import ConfigurationManager
+from src.TextSummarizer.components.model_evaluation import ModelEvaluation
+from src.TextSummarizer.logging import logger
 
 
 
