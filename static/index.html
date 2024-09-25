@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            animation: gradient 8s ease infinite;
+            background-size: 400% 400%;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 25px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        button::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background-color: rgba(255, 255, 255, 0.3);
+            transition: all 0.5s ease;
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #response {
+            margin-top: 20px;
+            color: green;
+            white-space: pre-wrap;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        #response.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Summarizer App</h1>
+        <form id="predictForm">
+            <textarea id="inputText" placeholder="Enter your text here..." rows="4"></textarea><br>
+            <button type="submit">Predict Summary</button>
+        </form>
+        <button id="trainButton">Start Training</button>
+        <div id="response"></div>
+    </div>
+
+    <script>
+        // Function to show animated response text
+        function showResponse(text) {
+            const responseDiv = document.getElementById("response");
+            responseDiv.innerText = text;
+            responseDiv.classList.add("show");
+        }
+
+        // Handling training
+        document.getElementById("trainButton").addEventListener("click", async () => {
+            showResponse("Training in progress...");
+            const response = await fetch("/train", { method: "GET" });
+            const text = await response.text();
+            showResponse(text);
+        });
+
+        // Handling prediction
+        document.getElementById("predictForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const text = document.getElementById("inputText").value;
+            showResponse("Predicting summary...");
+
+            const response = await fetch("/predict", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ text })
+            });
+
+            const result = await response.json();
+            showResponse("Summary: " + result.summary);
+        });
+    </script>
+</body>
+</html>
