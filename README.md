@@ -79,6 +79,8 @@ The app helps readers summarize news articles, ensuring they stay informed while
 ## Technology Stack:
 
 Backend: Python with NLP transformer libraries like Hugging Face’s Transformers, TensorFlow, or PyTorch.
+
 Frontend: A responsive web interface using modern frameworks like React or Angular for smooth user interactions.
+
 Deployment: Hosted on cloud platforms such as AWS, Netlify or Google Cloud to ensure scalability and performance.
 
