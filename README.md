@@ -22,6 +22,10 @@ Dataset - https://github.com/Anshul01R/DataSets/raw/main/summarizer-data.zip
 
 SummarEase Bot is a powerful and intuitive web-based text summarizer designed to streamline the process of condensing lengthy text into concise, informative summaries. Leveraging cutting-edge Natural Language Processing (NLP) techniques, this app utilizes transformer-based models, such as BERT or GPT, to generate accurate and contextually relevant summaries, making it ideal for a variety of users, including students, researchers, and professionals who deal with large volumes of text.
 
+## 📊 Sample Interface
+  ## 1. User Interface
+  ![Interface Description](Sample_image/img1.png)
+
 
 ## Key Features:
 
